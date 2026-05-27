@@ -1,4 +1,4 @@
-PHP Magento2 CRUD Operation :
+PHP Magento2 CRUD Operation : [ app/code/Nambi/Blog ] 
 
 
 Results demo images :
