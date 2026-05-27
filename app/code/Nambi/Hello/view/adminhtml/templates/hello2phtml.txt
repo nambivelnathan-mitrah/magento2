@@ -1,0 +1,6 @@
+<h2>Custom Module Page 2</h2>
+
+
+<p>
+Page 2 Information
+</p>

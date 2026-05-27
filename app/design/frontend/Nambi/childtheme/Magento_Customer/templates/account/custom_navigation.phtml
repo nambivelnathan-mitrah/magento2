@@ -1,0 +1,25 @@
+<?php
+$links = $block->getLinks();
+?>
+
+<div class="custom-account-menu">
+
+<h3>My Account</h3>
+
+<ul>
+
+<?php foreach ($links as $link): ?>
+
+<li class="<?= $link->getIsActive() ? 'active' : '' ?>">
+
+<a href="<?= $block->escapeUrl($link->getHref()) ?>">
+<?= $block->escapeHtml($link->getLabel()) ?>
+</a>
+
+</li>
+
+<?php endforeach; ?>
+
+</ul>
+
+</div>

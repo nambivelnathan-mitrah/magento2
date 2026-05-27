@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+layout="2columns-left"
+xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+<body>
+
+<!-- Wishlist -->
+<referenceBlock name="customer-account-navigation-wish-list-link">
+    <arguments>
+        <argument name="sortOrder" xsi:type="number">300</argument>
+    </arguments>
+</referenceBlock>
+
+<!-- Account Info  -->
+<referenceBlock name="customer-account-navigation-account-edit-link">
+    <arguments>
+        <argument name="sortOrder" xsi:type="number">10</argument>
+    </arguments>
+</referenceBlock>
+
+<!-- Orders  -->
+<referenceBlock name="customer-account-navigation-orders-link">
+    <arguments>
+        <argument name="sortOrder" xsi:type="number">200</argument>
+    </arguments>
+</referenceBlock>
+
+<!-- Custom Menu -->
+<referenceBlock name="customer_account_navigation">
+
+<!-- Custom Tab 1 -->
+<block class="Magento\Framework\View\Element\Html\Link\Current"
+name="customer-account-navigation-custom-1">
+<arguments>
+<argument name="path" xsi:type="string">custompage/customer/index</argument>
+<argument name="label" xsi:type="string">My Custom Tab 1</argument>
+<argument name="sortOrder" xsi:type="number">50</argument>
+</arguments>
+</block>
+
+<!-- Custom Tab 2 -->
+<block class="Magento\Framework\View\Element\Html\Link\Current"
+name="customer-account-navigation-custom-2">
+<arguments>
+<argument name="path" xsi:type="string">custompage/customer/orders</argument>
+<argument name="label" xsi:type="string">My Custom Tab 2</argument>
+<argument  xsi:type="number">300</argument>
+</arguments>
+</block>
+
+<!-- Custom Tab 3 -->
+<block class="Magento\Framework\View\Element\Html\Link\Current"
+name="customer-account-navigation-custom-3">
+<arguments>
+<argument name="path" xsi:type="string">custompage/customer/settings</argument>
+<argument name="label" xsi:type="string">My Custom Tab 3</argument>
+<argument name="sortOrder" xsi:type="number">10</argument>
+</arguments>
+</block>
+
+
+</referenceBlock>
+
+
+<referenceBlock name="customer-account-navigation-custom-1">
+    <arguments>
+        <argument name="sortOrder" xsi:type="number">220</argument>
+    </arguments>
+</referenceBlock>
+
+</body>
+</page>

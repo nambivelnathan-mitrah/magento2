@@ -1,0 +1,7 @@
+<?php
+/** @var \Magento\Framework\View\Element\Template $block */
+// This line pulls the CMS block content by its identifier
+echo $block->getLayout()->createBlock(\Magento\Cms\Block\Block::class)
+    ->setBlockId('header_custom_text') 
+    ->toHtml();
+?>

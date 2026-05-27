@@ -1,0 +1,538 @@
+<?php
+
+$categoryId = $block->getRequest()
+    ->getParam('category_id');
+
+$categoryName = '';
+
+if ($categoryId) {
+
+    $categoryName = $block->getCategoryName(
+        $categoryId
+    );
+}
+
+?>
+
+<div class="breadcrumbs">
+    <ul class="items">
+        <li class="item home">
+            <a href="<?= $block->getBaseUrl() ?>">
+                Home
+            </a>
+        </li>
+
+        <li class="item ">
+             <a href="<?= $block->getUrl('blog/post/index') ?>">
+                Posts
+            </a>
+        </li>
+
+
+         <?php if ($categoryName): ?>
+
+            <li class="item current">
+
+                <strong>
+
+                    <?= $categoryName ?>
+
+                </strong>
+
+            </li>
+
+        <?php endif; ?>
+
+    </ul>
+</div>
+
+<h2 >All Blog Posts</h2>
+<form method="get"
+      action="<?= $block->getUrl('blog/post/index') ?>"
+      style="
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-bottom:30px;
+      ">
+
+    <input type="text"
+           name="q"
+           placeholder="Search Post Title"
+           value="<?= $block->getRequest()->getParam('q') ?>"
+           style="
+           width:100%;
+           height:40px;
+           padding:0 10px;
+           ">
+
+    <button type="submit"
+            style="
+            height:40px;
+            padding:0 20px;
+            cursor:pointer;
+            ">
+        Search
+    </button>
+
+</form>
+
+<br>
+<!-- <div style="
+display:grid;
+grid-template-columns:repeat(4, 1fr);
+gap:20px;
+"> -->
+<div class="blog-grid">
+
+<?php foreach ($block->getPosts() as $post): ?>
+
+    <!-- <div style="
+    border:1px solid #ccc;
+    padding:15px;
+    min-height:420px;
+    box-sizing:border-box;
+    "> -->
+
+    <div class="blog-card">
+
+        <!-- <div style="
+        width:100%;
+        height:180px;
+        overflow:hidden;
+        margin-bottom:15px;
+        "> -->
+
+        <div class="blog-image">
+
+            <?php if ($post->getThumbnail()): ?>
+
+                <img src="<?= $block->getMediaUrl() . $post->getThumbnail() ?>"
+                     style="
+                     width:100%;
+                     height:180px;
+                     object-fit:cover;
+                     ">
+
+            <?php endif; ?>
+
+
+
+        </div>
+  <div class="blog-content">
+        <!-- <h3 style="
+        min-height:60px;
+        text-align:center;
+        "> -->
+<h3 class="blog-title">
+
+    <a href="<?= $block->getUrl(
+        'blog/post/view',
+        ['id' => $post->getPostId()]
+    ) ?>">
+
+        <?= $post->getTitle() ?>
+
+    </a>
+
+
+        </h3>
+
+        <p class="blog-meta">
+           <strong > Created At : </strong>
+            <?= $post->getCreatedAt() ?>
+        </p>
+
+
+
+
+
+<p class="blog-meta">
+    <b > Category :</b>
+
+    <a href="<?= $block->getUrl(
+        'blog/post/index',
+        [
+            'category_id' => $post->getCategoryId()
+        ]
+    ) ?>">
+
+        <?= $block->getCategoryName(
+            $post->getCategoryId()
+        ) ?>
+
+    </a>
+
+</p>
+
+
+
+
+
+       <?php
+
+$shortDescription = strip_tags(
+    $post->getShortDescription()
+);
+
+?>
+
+<p class="blog-short-description">
+<strong > Short Description : </strong>
+    <?= substr($shortDescription, 0, 100); ?>...
+
+    <a href="<?= $block->getUrl(
+        'blog/post/view',
+        ['id' => $post->getPostId()]
+    ) ?>">
+
+        Read More
+
+    </a>
+
+</p>
+
+
+
+
+
+
+</div>
+    </div>
+
+<?php endforeach; ?>
+
+
+</div>
+
+<br><hr><br>
+
+<!-- <div style="width:100%;
+    display:flex;
+    justify-content:flex-end;
+    margin-top:30px;">
+  
+</div> -->
+
+<div class="pagination-wrapper">
+
+    <div class="pagination-left">
+        <?= $block->getChildHtml('pager'); ?>
+    </div>
+ </div>
+
+
+
+
+<!--  
+<style>
+    .pagination-wrapper{
+    width:100%;
+    margin-top:30px;
+}
+
+.pagination-left{
+    width:100%;
+}
+
+.pagination-left .toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+}
+
+.pagination-left .pages{
+    margin-left:auto;
+}
+
+
+.blog-short-description{
+    margin-top:15px;
+    line-height:24px;
+    color:#555;
+}
+
+.blog-short-description a{
+    color:#1979c3;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.blog-short-description a:hover{
+    text-decoration:underline;
+}
+</style> -->
+
+<style>
+
+body{
+    background:#f5f5f5;
+}
+
+/*
+PAGE TITLE
+*/
+
+h2{
+    font-size:28px;
+    margin-bottom:30px;
+    font-weight:600;
+    color:brown;
+}
+
+/*
+SEARCH
+*/
+
+form{
+    display:flex;
+    gap:15px;
+    align-items:center;
+    margin-bottom:40px;
+}
+
+form input{
+    width:100%;
+    height:50px;
+    padding:0 15px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    font-size:16px;
+    outline:none;
+}
+
+form button{
+    height:50px;
+    padding:0 30px;
+    border:none;
+    background:#1979c3;
+    color:#fff;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+
+    transition:0.3s ease;
+}
+
+form button:hover{
+    background:#125a91;
+}
+
+/*
+GRID
+*/
+
+.blog-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:25px;
+}
+
+/*
+CARD
+*/
+
+.blog-card{
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+
+    transition:0.4s ease;
+
+    min-height:520px;
+}
+
+.blog-card:hover{
+    transform:translateY(-30px);
+
+    box-shadow:
+    0 12px 30px rgba(0,0,0,0.15);
+}
+
+/*
+IMAGE
+*/
+
+.blog-image{
+    width:100%;
+    height:220px;
+    overflow:hidden;
+}
+
+.blog-image img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+
+    transition:0.5s ease;
+}
+
+.blog-card:hover img{
+    transform:scale(1.08);
+}
+
+/*
+CONTENT
+*/
+
+.blog-content{
+    padding:20px;
+}
+
+/*
+TITLE
+*/
+
+.blog-title{
+    min-height:70px;
+    margin-bottom:20px;
+    line-height:1.5;
+}
+
+.blog-title a{
+    text-decoration:none;
+    color:#222;
+    font-size:24px;
+    font-weight:600;
+
+    transition:1s;
+}
+
+.blog-title a:hover{
+    color:#1979c3;
+}
+
+/*
+META
+*/
+
+.blog-meta{
+    margin-bottom:12px;
+    color:#555;
+    line-height:26px;
+}
+
+.blog-meta a{
+    text-decoration:none;
+    color:#1979c3;
+    font-weight:600;
+}
+
+.blog-meta a:hover{
+    text-decoration:underline;
+}
+
+/*
+SHORT DESCRIPTION
+*/
+
+.blog-short-description{
+    margin-top:15px;
+    line-height:26px;
+    color:#555;
+}
+
+.blog-short-description a{
+    color:#1979c3;
+    font-weight:600;
+    text-decoration:none;
+}
+
+.blog-short-description a:hover{
+    text-decoration:underline;
+}
+
+/*
+PAGINATION
+*/
+
+.pagination-wrapper{
+    width:100%;
+    margin-top:0px;
+}
+
+.pagination-left{
+    width:100%;
+}
+
+.pagination-left .toolbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    width:100%;
+}
+
+.pagination-left .pages{
+    margin-left:auto;
+}
+
+/*
+RESPONSIVE
+*/
+
+@media(max-width:1200px){
+
+    .blog-grid{
+        grid-template-columns:repeat(3, 1fr);
+    }
+}
+
+@media(max-width:900px){
+
+    .blog-grid{
+        grid-template-columns:repeat(2, 1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    .blog-grid{
+        grid-template-columns:1fr;
+    }
+
+    form{
+        flex-direction:column;
+    }
+
+    form button{
+        width:100%;
+    }
+}
+
+
+/* 
+.page-wrapper .header.content{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.page-wrapper .logo{
+    margin-top:0;
+}
+
+.page-wrapper .sections.nav-sections{
+    margin-bottom:0;
+}
+
+.page-wrapper .navigation{
+    top:0 !important;
+    position:relative;
+}
+
+.page-wrapper .block-search{
+    margin-top:0 !important;
+    top:0 !important;
+    position:relative;
+}
+
+.page-wrapper .block-search .control{
+    border-top:none;
+}
+
+.page-header .header.panel{
+    padding:0;
+} */
+</style>

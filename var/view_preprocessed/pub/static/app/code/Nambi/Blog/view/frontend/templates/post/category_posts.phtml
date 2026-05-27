@@ -1,0 +1,1 @@
+<?php $posts = $block->getPosts(); ?> <div class="category-post-page"><h2>Category Posts</h2><?php if (count($posts)): ?> <ul><?php foreach ($posts as $post): ?> <li> <h3><?= $escaper->escapeHtml( $post->getTitle() ) ?></h3><p><?= $post->getShortDescription() ?></p><hr></li> <?php endforeach; ?></ul><?php else: ?> <h3>No Posts Found</h3><?php endif; ?></div>

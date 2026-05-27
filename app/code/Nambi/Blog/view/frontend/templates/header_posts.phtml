@@ -1,0 +1,18 @@
+<div class="custom-blog-menu">
+
+    <?php foreach ($block->getCategories() as $category): ?>
+
+        <a href="<?= $block->getUrl(
+            'blog/category/view',
+            ['id' => $category->getId()]
+        ) ?>">
+
+            <?= $escaper->escapeHtml(
+                $category->getCategoryName()
+            ) ?>
+
+        </a>
+
+    <?php endforeach; ?>
+
+</div>

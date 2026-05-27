@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+
+    <menu>
+
+        <add id="Nambi_Blog::blog_main"
+             title="Blog"
+             module="Nambi_Blog"
+             sortOrder="10"
+             resource="Nambi_Blog::blog_main"/>
+
+        <add id="Nambi_Blog::post"
+             title="Post"
+             module="Nambi_Blog"
+             sortOrder="20"
+             parent="Nambi_Blog::blog_main"
+             action="nambi_blog/post/index"
+             resource="Nambi_Blog::post"/>
+
+        <add id="Nambi_Blog::category"
+             title="Category"
+             module="Nambi_Blog"
+             sortOrder="30"
+             parent="Nambi_Blog::blog_main"
+             action="nambi_blog/category/index"
+             resource="Nambi_Blog::category"/>
+
+    </menu>
+
+</config>

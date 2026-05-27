@@ -1,0 +1,22 @@
+<?php
+$customer = $block->getCustomer();
+
+$type = $customer && $customer->getCustomAttribute('profession_type')
+    ? $customer->getCustomAttribute('profession_type')->getValue() : '';
+?>
+
+<div class="field profession_type">
+    <label for="profession_type" class="label">
+        <span>Skills</span>
+    </label>
+
+    <div class="control">
+        <select name="profession_type" id="profession_type">
+            <option value=""></option>
+            <option value="1" <?= ($type == 1) ? 'selected' : '' ?>>PHP</option>
+            <option value="2" <?= ($type == 2) ? 'selected' : '' ?>>Magento</option>
+            <option value="3" <?= ($type == 3) ? 'selected' : '' ?>>Python</option>
+            <option value="4" <?= ($type == 4) ? 'selected' : '' ?>>JavaScript</option>
+        </select>
+    </div>
+</div>

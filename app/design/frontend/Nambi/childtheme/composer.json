@@ -1,0 +1,9 @@
+{
+    "name": "nambi/childtheme",
+    "description": "Custom Child Theme using demo.css",
+    "type": "magento2-theme",
+    "version": "1.0.0",
+    "autoload": {
+        "files": ["registration.php"]
+    }
+}

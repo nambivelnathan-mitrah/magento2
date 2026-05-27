@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+
+    <system>
+        <!-- Custom Tab -->
+        <tab id="nambi_tab" translate="label" sortOrder="20">
+            <label>Nambi </label>
+        </tab>
+
+        <!-- Section -->
+        <section id="nambi_settings"
+                 translate="label"
+                 sortOrder="10"
+                 showInDefault="1"
+                 showInWebsite="1"
+                 showInStore="1">
+
+            <label>Custom Tab 1</label>
+            <tab>nambi_tab</tab>
+            <resource>Nambi_Hello::config</resource>
+
+            <!-- Group -->
+            <group id="general"
+                   translate="label"
+                   sortOrder="10"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+
+                <label>General Settings 1</label>
+
+                <!-- Field 1 -->
+                <field id="enable"
+                       translate="label commen"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+
+                <!-- Field 3 -->
+                <field id="Name"
+                       translate="label"
+                       type="text"
+                       sortOrder="20"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+
+                    <label>Name</label>
+                </field>
+
+                <!-- Field 4 -->
+                <field id="age"
+                       translate="label"
+                       type="text"
+                       sortOrder="30"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+
+                    <label>Age</label>
+                </field>
+
+
+                <field id="phone number"
+                       translate="label"
+                       type="text"
+                       sortOrder="40"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+
+                    <label>Phone number</label>
+                </field>
+
+            </group>
+        </section>
+
+         <!-- Section 2 -->
+        <section id="nambi_custom"
+                 translate="label"
+                 sortOrder="20"
+                 showInDefault="1"
+                 showInWebsite="1"
+                 showInStore="1">
+
+            <label>Custom Tab 2</label>
+            <tab>nambi_tab</tab>
+            <resource>Nambi_Hello::config</resource>
+
+            <!-- Group -->
+            <group id="general"
+                   translate="label"
+                   sortOrder="10"
+                   showInDefault="1"
+                   showInWebsite="1"
+                   showInStore="1">
+
+                <label>General Settings 2</label>
+
+                <!-- Field 1 -->
+                <field id="enable"
+                       translate="label"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+
+                    <label>Enable Module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+
+                <!-- Field 3 -->
+                <field id="message"
+                       translate="label"
+                       type="text"
+                       sortOrder="20"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+
+                    <label>Custom Message</label>
+                </field>
+
+                <!-- Field 4 -->
+                <field id="title"
+                       translate="label"
+                       type="text"
+                       sortOrder="30"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1">
+
+                    <label>Page Title</label>
+                </field>
+
+                <!-- Field 5 -->
+                <field id="state"
+                       translate="label"
+                       type="text"
+                       sortOrder="40"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="1"  >
+
+                    <label>State</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

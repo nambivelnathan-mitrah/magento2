@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+<body>
+
+<!--
+<move element="catalog.topnav" destination="header-wrapper" after="logo"/>
+<move element="minicart" destination="catalog.topnav" after="top.search" />
+<move element="top.search" destination="catalog.topnav" />
+-->
+ <!-- current working code  16/4   page.top [ container ::  block name | container name | block name  // header-wrapper // ]-->
+ 
+<move element="catalog.topnav" destination="header-wrapper" after="logo"/>
+<move element="top.search" destination="header-wrapper" after="catalog.topnav"/>
+<move element="minicart" destination="header-wrapper" after="top.search"/>
+<move element="custom.user.icon" destination="header-wrapper" after="minicart"/>
+
+<!--move element="navigation.sections" destination="header-wrapper" after="logo" />
+<move element="top.search" destination="catalog.topnav" before="minicart"/>
+<move element="minicart" destination="catalog.topnav" after="top.search"/-->
+<!--  17/4 11am
+<move element="navigation.sections" destination="header-wrapper" after="logo"/>
+<move element="top.search" destination="catalog.topnav" after="navigation.sections"/>
+<move element="minicart" destination="catalog.topnavheader-wrapper" after="top.search"/>
+-->
+<!--move element="catalog.topnav" destination="header-wrapper" after="logo"/>
+<move element="top.search" destination="header-wrapper" after="logo"/>
+<referenceBlock name="minicart" remove="false" display="true"/>
+<move element="minicart" destination="header-wrapper" before="-"/-->
+<!--move element="minicart" destination="header-wrapper" after="top.search"/-->
+<!--move element="catalog.topnav" destination="header-wrapper" after="logo"/>
+<move element="top.search" destination="header-wrapper" after="logo"/>
+<move element="minicart" destination="header-wrapper" after="top.search"/-->
+
+
+
+
+
+<referenceContainer name="header.panel">
+    <!-- Remove Welcome Message -->
+    <referenceBlock name="header.panel.welcome" remove="true"/>
+    <!-- Remove Sign In -->
+    <!--referenceBlock name="header.links" remove="true"/-->
+</referenceContainer>
+
+<referenceContainer name="header-wrapper">
+    <block
+        class="Magento\Framework\View\Element\Template"
+        name="custom.user.icon"
+        template="Magento_Theme::html/usericon.phtml"
+        after="minicart"/>
+</referenceContainer>
+
+ <!--referenceContainer name="header.panel">
+            <block class="Magento\Framework\View\Element\Template" 
+                   name="custom.header.text" 
+                   before="-" 
+                   template="Magento_Theme::html/custom_header_text.phtml" />
+        </referenceContainer-->
+<referenceContainer name="header.panel">
+            <!--  new custom block -->
+            <block class="Magento\Framework\View\Element\Template" 
+                   name="custom.header.text.block" 
+                   before="-" 
+                   template="Magento_Theme::html/custom_header.phtml" />
+</referenceContainer>
+<!-- Add Custom Message 
+<referenceContainer name="header.panel">
+
+    <block
+        class="Magento\Framework\View\Element\Template"
+        name="custom.header.message"
+        template="Magento_Theme::html/custom_header_message.phtml"
+        before="-"/>
+
+</referenceContainer-->
+       <!-- 3. Removes "My Account" link from the top -->
+        <referenceBlock name="my-account-link" remove="true"/>
+
+        <!-- 4. Removes "My Wish List" link from the top -->
+        <referenceBlock name="wish-list-link" remove="true"/>
+ <!-- Removes the "Sign In" and "Sign Out" links -->
+<referenceBlock name="customer" remove="true"/>
+    <!--referenceBlock name="customer" remove="true"/-->
+        <!-- Removes the "Create an Account" link -->
+        <referenceBlock name="register-link" remove="true"/>
+        
+</body>
+</page>

@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <argument name="data" xsi:type="array">
+
+        <item name="js_config" xsi:type="array">
+
+            <item name="provider" xsi:type="string">
+                product_listing.product_listing_data_source
+            </item>
+
+        </item>
+
+        <item name="spinner" xsi:type="string">columns</item>
+
+    </argument>
+
+    <!-- DATA SOURCE -->
+
+    <dataSource name="product_listing_data_source">
+
+        <argument name="dataProvider" xsi:type="configurableObject">
+
+            <argument name="class" xsi:type="string">
+                Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider
+            </argument>
+
+            <argument name="name" xsi:type="string">
+                product_listing_data_source
+            </argument>
+
+            <argument name="primaryFieldName" xsi:type="string">
+                product_id
+            </argument>
+
+            <argument name="requestFieldName" xsi:type="string">
+                product_id
+            </argument>
+
+        </argument>
+
+    </dataSource>
+
+    <!-- TOOLBAR -->
+
+    <listingToolbar name="listing_top">
+
+        <bookmark name="bookmarks"/>
+
+        <columnsControls name="columns_controls"/>
+
+        <filterSearch name="fulltext"/>
+
+        <filters name="listing_filters"/>
+
+        <paging name="listing_paging"/>
+
+        <exportButton name="export_button"/>
+
+    </listingToolbar>
+
+    <!-- COLUMNS -->
+
+    <columns name="columns">
+
+        <selectionsColumn name="ids">
+
+            <settings>
+                <indexField>product_id</indexField>
+            </settings>
+
+        </selectionsColumn>
+
+        <column name="product_id">
+
+            <settings>
+
+                <filter>textRange</filter>
+
+                <sorting>asc</sorting>
+
+                <label>ID</label>
+
+            </settings>
+
+        </column>
+
+        <column name="name">
+
+            <settings>
+
+                <filter>text</filter>
+
+                <label>Name</label>
+
+            </settings>
+
+        </column>
+
+        <column name="status">
+
+            <settings>
+
+                <filter>text</filter>
+
+                <label>Status</label>
+
+            </settings>
+
+        </column>
+
+        <column name="created_at">
+
+            <settings>
+
+                <filter>dateRange</filter>
+
+                <dataType>date</dataType>
+
+                <label>Created At</label>
+
+            </settings>
+
+        </column>
+
+    </columns>
+
+</listing>

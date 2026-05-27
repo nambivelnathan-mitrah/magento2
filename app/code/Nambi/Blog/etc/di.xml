@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+
+                <item name="nambi_blog_post_listing_data_source" xsi:type="string">
+                    Nambi\Blog\Model\ResourceModel\Post\Grid\Collection
+                </item>
+
+                <!-- <item name="nambi_blog_category_form_data_source"
+                      xsi:type="string">
+                    Nambi\Blog\Model\ResourceModel\Category\Collection
+                </item> -->
+
+                <item name="nambi_blog_category_listing_data_source"
+                      xsi:type="string">
+                    Nambi\Blog\Model\ResourceModel\Category\Grid\Collection
+                </item>
+
+<!-- 
+                <type name="Magento\Theme\Block\Html\Topmenu">
+
+                   <plugin name="nambi_blog_topmenu"  type="Nambi\Blog\Plugin\Topmenu"/>
+
+                </type> -->
+
+                
+
+
+            </argument>
+        </arguments>
+    </type>
+
+</config>
+
+

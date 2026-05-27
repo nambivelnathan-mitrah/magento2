@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">hello_form.hello_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+    </argument>
+
+    <settings>
+        <namespace>hello_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dependency>hello_form.hello_form_data_source</dependency>
+        </deps>
+    </settings>
+
+    <dataSource name="hello_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Nambi\Hello\Model\DataProvider</argument>
+            <argument name="name" xsi:type="string">hello_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+
+
+    <fieldset name="general">
+
+        <settings>
+        <label translate="true">Custom Form Fields</label>
+        </settings>
+
+
+        <field name="title" formElement="input">
+        <settings>
+        <dataType>text</dataType>
+        <label translate="true">Title</label>
+        </settings>
+        </field>
+
+        <field name="description" formElement="textarea">
+        <settings>
+        <dataType>text</dataType>
+        <label translate="true">Description</label>
+        </settings>
+        </field>
+
+        <field name="content" formElement="input" >
+        <settings>
+        <dataType>text</dataType>
+        <label translate="false">Content</label>
+        </settings>
+        </field>
+
+        <field name="checkbox" formElement="checkbox">
+        <settings>
+        <dataType>text</dataType>
+        <label>checkbox sample</label>
+        </settings>
+        </field>
+
+        <field name="date" formElement="date">
+        <settings>
+        <dataType>text</dataType>
+        <label>date</label>
+        </settings>
+        </field>
+
+        <field name="wysiwyg" formElement="wysiwyg"> 
+        <settings>
+        <dataType>text</dataType>
+        <label>Description</label>
+        </settings>
+        </field>
+
+
+
+<!--Custom Column-->
+
+        <columns name="grid_records_columns">
+        <selectionsColumn name="ids">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+            <item name="indexField" xsi:type="string">entity_id</item>
+            <item name="sorting" xsi:type="string">desc</item>
+            <item name="sortOrder" xsi:type="number">0</item>
+            </item>
+           </argument>
+       </selectionsColumn>
+       <column name="title">
+       <argument name="data" xsi:type="array">
+       <item name="config" xsi:type="array">
+       <item name="filter" xsi:type="string">textRange</item>
+       <item name="label" xsi:type="string" translate="true">Title</item>
+       </item>
+       </argument>
+       </column>
+
+        <column name="title2">
+        <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+        <item name="filter" xsi:type="string">textRange</item>
+        <item name="label" xsi:type="string" translate="true">Title2</item>
+        </item>
+        </argument>
+        </column>
+        
+        <column name="content" >
+        <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+        <item name="filter" xsi:type="string">true</item>
+        <item name="label" xsi:type="string" translate="true">Content</item>
+        </item>
+        </argument>
+        </column>
+
+        <column name="Description" >
+        <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+        <item name="filter" xsi:type="string">true</item>
+        <item name="label" xsi:type="string" translate="true">Description</item>
+        </item>
+        </argument>
+        </column>
+
+          <column name="id">
+            <settings><label>ID</label></settings>
+        </column>
+        <column name="title">
+            <settings><label>Title</label></settings>
+        </column>
+        <column name="status">
+            <settings><label>Status</label></settings>
+        </column>
+        <actionsColumn name="actions"/>
+
+       </columns>
+
+    </fieldset>
+
+</form>
+        
+
+
+
+

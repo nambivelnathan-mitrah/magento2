@@ -1,0 +1,40 @@
+<?php /** @var \Magento\Framework\View\Element\Template $block */ ?>
+<div class="custom-header-wrapper">
+    <div class="header-col logo-col"><?= $block->getChildHtml('logo') ?></div>
+    <div class="header-col nav-col"><?= $block->getChildHtml('catalog.topnav') ?></div>
+    <div class="header-col search-col"><?= $block->getChildHtml('top.search') ?></div>
+    <div class="header-col cart-col"><?= $block->getChildHtml('minicart') ?></div>
+</div>
+
+
+
+<style>
+/* Reset the parent container */
+.header.content {
+    max-width: 100% !important;
+    padding: 0 20px !important;
+}
+
+.custom-header-wrapper {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+.block-search, 
+.minicart-wrapper {
+    position: static !important; /* Forces them to stay in the Flex flow */
+    margin: 0 !important;
+    display: inline-block;
+}
+
+.nav-col {
+    flex-grow: 1; /* Makes the category list fill the center space */
+    margin: 0 20px;
+}
+
+
+</style>

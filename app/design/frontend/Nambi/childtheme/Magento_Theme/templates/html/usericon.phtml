@@ -1,0 +1,109 @@
+
+
+<?php
+/** @var \Magento\Theme\Block\Html\Header $block */
+/** @var \Magento\Customer\Model\Url $customerUrl */
+// We use the ObjectManager only for the URL model to keep this example simple, 
+// but the login logic is handled by Knockout.js below.
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerUrl = $objectManager->get(\Magento\Customer\Model\Url::class);
+?>
+
+<div class="header-user" data-bind="scope: 'customer'">
+    <div class="user-icon">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <i class="fa-solid fa-user"></i>
+    </div>
+
+    <div class="user-dropdown">
+        <ul>
+            <!-- ko if: customer().fullname -->
+                <li><a href="<?= $escaper->escapeUrl($customerUrl->getAccountUrl()) ?>">My Account</a></li>
+                <li><a href="<?= $escaper->escapeUrl($customerUrl->getLogoutUrl()) ?>">Sign Out</a></li>
+            <!-- /ko -->
+
+            <!-- ko ifnot: customer().fullname -->
+                <li><a href="<?= $escaper->escapeUrl($customerUrl->getLoginUrl()) ?>">Sign In</a></li>
+                <li><a href="<?= $escaper->escapeUrl($customerUrl->getRegisterUrl()) ?>">Create Account</a></li>
+            <!-- /ko -->
+
+        </ul>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "customer": {
+                        "component": "Magento_Customer/js/view/customer"
+                    }
+                }
+            }
+        }
+    }
+</script>
+
+
+
+<style>
+
+.header-user {
+position: relative;
+display: inline-block;
+margin-left: 15px;
+}
+
+.user-icon {
+cursor: pointer;
+font-size: 20px;
+}
+
+.user-dropdown {
+display: none;
+position: absolute;
+right: 0;
+background: #fff;
+box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+padding: 10px;
+min-width:150px;
+z-index:999;
+}
+
+.user-dropdown ul {
+list-style:none;
+padding:0;
+margin:0;
+}
+
+.user-dropdown li {
+padding:5px 0;
+}
+
+.user-dropdown li a{
+text-decoration:none;
+color:#333;
+}
+
+.user-dropdown li a:hover{
+color:#000;
+}
+
+.header-user:hover .user-dropdown {
+display:block;
+}
+
+.header.content {
+display:flex;
+align-items:center;
+}
+
+.nav-sections {
+margin-left:20px;
+}
+
+</style>
+
+
+

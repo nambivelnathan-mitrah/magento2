@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+
+    <!-- FORM CONFIG -->
+
+    <argument name="data" xsi:type="array">
+
+        <item name="js_config" xsi:type="array">
+
+            <item name="provider" xsi:type="string">
+                nambi_blog_post_form.nambi_blog_post_form_data_source
+            </item>
+
+            <item name="deps" xsi:type="string">
+                nambi_blog_post_form.nambi_blog_post_form_data_source
+            </item>
+
+        </item>
+
+        <item name="label" xsi:type="string" translate="true">
+            Add Post
+        </item>
+
+        <item name="template" xsi:type="string">
+            templates/form/collapsible
+        </item>
+
+    </argument>
+
+  
+    <!-- SETTINGS -->
+    
+<!-- <argument name="data" xsi:type="string">
+
+<item name="js_config" xsi:type="array">
+nambi_blog_post_form.nambi_blog_post_form_data_source
+</item>
+
+<item name="provider" xsi:type="array"></item>
+
+</argument> -->
+
+
+
+
+
+
+
+    <settings>
+
+        <namespace>nambi_blog_post_form</namespace>
+
+        <dataScope>data</dataScope>
+
+        <deps>
+            <dep>
+                nambi_blog_post_form.nambi_blog_post_form_data_source
+            </dep>
+        </deps>
+
+
+    <buttons>
+
+         <button name="back"
+                class="Nambi\Blog\Block\Adminhtml\Post\Edit\BackButton"/>
+
+
+        <button name="save"
+                class="Nambi\Blog\Block\Adminhtml\Post\Edit\SaveButton"/>
+
+    </buttons>
+
+
+    </settings>
+
+    <!-- DATA SOURCE -->
+
+   <dataSource name="nambi_blog_post_form_data_source">
+
+    <argument name="data" xsi:type="array">
+
+        <item name="js_config" xsi:type="array">
+
+            <item name="component" xsi:type="string">
+                Magento_Ui/js/form/provider
+            </item>
+
+        </item>
+
+    </argument>
+
+    <settings>
+
+        <submitUrl path="nambi_blog/post/save"/>
+
+    </settings>
+
+    <dataProvider class="Nambi\Blog\Model\Post\DataProvider"
+                  name="nambi_blog_post_form_data_source">
+
+        <settings>
+
+            <requestFieldName>
+                post_id
+            </requestFieldName>
+
+            <primaryFieldName>
+                post_id
+            </primaryFieldName>
+
+        </settings>
+
+    </dataProvider>
+
+</dataSource>
+
+    <!-- FIELDSET -->
+
+    <fieldset name="general">
+
+        <settings>
+
+            <label translate="true">
+               
+            </label>
+
+        </settings>
+
+
+<!--status-->
+<field name="status">
+
+    <argument name="data" xsi:type="array">
+
+        <item name="config" xsi:type="array">
+
+            <item name="dataType" xsi:type="string">
+                boolean
+            </item>
+
+            <item name="formElement" xsi:type="string">
+                checkbox
+            </item>
+
+            <item name="componentType" xsi:type="string">
+                field
+            </item>
+
+            <item name="dataScope" xsi:type="string">
+                status
+            </item>
+
+            <item name="label" xsi:type="string" translate="true">
+                Enable Post
+            </item>
+
+            <item name="prefer" xsi:type="string">
+                toggle
+            </item>
+
+            <item name="valueMap" xsi:type="array">
+
+                <item name="true" xsi:type="number">
+                    1
+                </item>
+
+                <item name="false" xsi:type="number">
+                    0
+                </item>
+
+            </item>
+
+            <item name="default" xsi:type="number">
+                1
+            </item>
+
+        </item>
+
+    </argument>
+
+</field>
+
+
+<!-- 
+<field name="status">
+
+    <argument name="data" xsi:type="array">
+
+        <item name="config" xsi:type="array">
+
+            <item name="dataType" xsi:type="string">
+                number
+            </item>
+
+            <item name="formElement" xsi:type="string">
+                select
+            </item>
+
+            <item name="componentType" xsi:type="string">
+                field
+            </item>
+
+            <item name="dataScope" xsi:type="string">
+                status
+            </item>
+
+            <item name="label" xsi:type="string" translate="true">
+                Status
+            </item>
+
+            <item name="default" xsi:type="number">
+                1
+            </item>
+
+        </item>
+
+    </argument>
+
+    <settings>
+
+        <options>
+
+            <option name="1" xsi:type="array">
+
+                <item name="label" xsi:type="string">
+                    Active
+                </item>
+
+                <item name="value" xsi:type="number">
+                    1
+                </item>
+
+            </option>
+
+            <option name="0" xsi:type="array">
+
+                <item name="label" xsi:type="string">
+                    Inactive
+                </item>
+
+                <item name="value" xsi:type="number">
+                    0
+                </item>
+
+            </option>
+
+        </options>
+
+    </settings>
+
+</field> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- TITLE -->
+
+<field name="title">
+
+    <argument name="data" xsi:type="array">
+
+        <item name="config" xsi:type="array">
+
+            <item name="dataType" xsi:type="string">
+                text
+            </item>
+
+            <item name="formElement" xsi:type="string">
+                input
+            </item>
+
+            <item name="componentType" xsi:type="string">
+                field
+            </item>
+
+            <item name="dataScope" xsi:type="string">
+                title
+            </item>
+
+            <item name="sortOrder" xsi:type="number">
+                        30
+            </item>
+
+<item name="validation" xsi:type="array">
+
+    <item name="required-entry" xsi:type="boolean">
+        true
+    </item>
+
+</item>
+
+            <item name="label" xsi:type="string" translate="true">
+                Title
+            </item>
+
+        </item>
+
+    </argument>
+
+</field>
+
+<!--new 22/5--> 
+
+<field name="category_id" sortOrder="25" formElement="select">
+
+    <settings>
+
+        <dataType>text</dataType>
+
+        <label translate="true">
+            Category
+        </label>
+
+        <dataScope>
+            category_id
+        </dataScope>
+
+    </settings>
+
+    <formElements>
+
+        <select>
+
+            <settings>
+
+                <options class="Nambi\Blog\Model\Category\Source\CategoryOptions"/>
+
+            </settings>
+
+        </select>
+
+    </formElements>
+
+</field>
+
+
+
+
+
+
+
+
+
+<field name="short_description"
+       sortOrder="60"
+       formElement="wysiwyg">
+
+    <settings>
+
+        <dataType>text</dataType>
+
+        <label translate="true">
+            Short Description
+        </label>
+
+        <visible>true</visible>
+
+    </settings>
+
+    <formElements>
+
+        <wysiwyg>
+
+            <settings>
+
+                <rows>20</rows>
+
+                <wysiwyg>true</wysiwyg>
+
+            </settings>
+
+        </wysiwyg>
+
+    </formElements>
+
+    <argument name="data" xsi:type="array">
+
+        <item name="config" xsi:type="array">
+
+            <item name="component" xsi:type="string">
+                Magento_Ui/js/form/element/wysiwyg
+            </item>
+
+            <item name="source" xsi:type="string">
+                post
+            </item>
+
+            <item name="dataScope" xsi:type="string">
+                short_description
+            </item>
+
+            <item name="wysiwygConfigData" xsi:type="array">
+
+                <item name="is_pagebuilder_enabled"
+                      xsi:type="boolean">
+                    false
+                </item>
+
+                <item name="toggle_button"
+                      xsi:type="boolean">
+                    true
+                </item>
+
+                <item name="enabled"
+                      xsi:type="boolean">
+                    true
+                </item>
+
+                <item name="add_variables"
+                      xsi:type="boolean">
+                    true
+                </item>
+
+                <item name="add_widgets"
+                      xsi:type="boolean">
+                    true
+                </item>
+
+                <item name="add_images"
+                      xsi:type="boolean">
+                    true
+                </item>
+
+                <item name="add_directives"
+                      xsi:type="boolean">
+                    true
+                </item>
+
+            </item>
+
+        </item>
+
+    </argument>
+
+</field>
+
+
+<!--thumbnail-->
+
+<field name="thumbnail">
+
+    <argument name="data" xsi:type="array">
+
+        <item name="config" xsi:type="array">
+
+            <item name="dataType" xsi:type="string">
+                string
+            </item>
+
+            <item name="sortOrder" xsi:type="number">
+                 20
+            </item>
+
+            <item name="label" xsi:type="string" translate="true">
+                Thumbnail
+            </item>
+
+            <item name="formElement" xsi:type="string">
+                imageUploader
+            </item>
+
+            <item name="componentType" xsi:type="string">
+                imageUploader
+            </item>
+
+            <item name="dataScope" xsi:type="string">
+                thumbnail
+            </item>
+
+            <item name="elementTmpl" xsi:type="string">
+                ui/form/element/uploader/uploader
+            </item>
+
+            <item name="previewTmpl" xsi:type="string">
+                Magento_Catalog/image-preview
+            </item>
+
+            <item name="validation" xsi:type="array">
+
+            <item name="required-entry" xsi:type="boolean">
+             true
+            </item>
+
+            </item>
+
+            <!-- <item name="required" xsi:type="boolean">
+                false
+            </item> -->
+
+            <item name="uploaderConfig" xsi:type="array">
+
+                <item name="url" xsi:type="url"
+                      path="nambi_blog/post/upload"/>
+
+            </item>
+
+        </item>
+
+    </argument>
+
+
+
+</field>
+
+
+    </fieldset>
+
+</form>
+
+
+
